@@ -1,0 +1,406 @@
+/* ==========================================================================
+   BizSpeak AI - Inzmo Behance Visual Design System
+   Inspired by INZMO Product Graphic Branding (Behance Showcase)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Inzmo Graphic Palette */
+  --bg-obsidian: #080b12;
+  --bg-obsidian-light: #0d121f;
+  --bg-card: rgba(18, 26, 42, 0.65);
+  --bg-card-hover: rgba(26, 37, 59, 0.8);
+  --bg-card-active: rgba(32, 46, 74, 0.9);
+  
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --border-glass-glow: rgba(0, 245, 155, 0.3);
+  --border-glass-cyan: rgba(0, 216, 246, 0.3);
+  
+  /* Inzmo Signature Neon Accents */
+  --accent-mint: #00F59B;
+  --accent-mint-glow: rgba(0, 245, 155, 0.25);
+  --accent-cyan: #00D8F6;
+  --accent-cyan-glow: rgba(0, 216, 246, 0.25);
+  --accent-violet: #6366F1;
+  --accent-purple: #A855F7;
+  --accent-coral: #FF5E7E;
+  --accent-warning: #F59E0B;
+
+  /* Text Colors */
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --text-dim: #64748B;
+  
+  /* Typography */
+  --font-display: 'Outfit', -apple-system, sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* Shadows & Glows */
+  --shadow-glass: 0 20px 50px rgba(0, 0, 0, 0.6);
+  --glow-mint: 0 0 25px rgba(0, 245, 155, 0.35);
+  --glow-cyan: 0 0 25px rgba(0, 216, 246, 0.35);
+  --glow-violet: 0 0 25px rgba(99, 102, 241, 0.35);
+}
+
+/* Reset & Global Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-obsidian);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 85% 20%, rgba(0, 245, 155, 0.1) 0%, transparent 35%),
+    radial-gradient(circle at 50% 85%, rgba(0, 216, 246, 0.08) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-obsidian);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Inzmo Glass Container Utility */
+.inzmo-glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-glass);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.inzmo-glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.inzmo-glass-card.interactive:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), var(--glow-mint);
+  border-color: var(--border-glass-glow);
+}
+
+/* Typography Helpers */
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.gradient-text-mint {
+  background: linear-gradient(135deg, #FFFFFF 20%, var(--accent-mint) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-cyan {
+  background: linear-gradient(135deg, #FFFFFF 20%, var(--accent-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-violet {
+  background: linear-gradient(135deg, #FFFFFF 20%, #C084FC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Inzmo Pill Badge */
+.inzmo-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  color: var(--text-muted);
+}
+
+.inzmo-pill.mint {
+  background: rgba(0, 245, 155, 0.1);
+  border-color: rgba(0, 245, 155, 0.3);
+  color: var(--accent-mint);
+}
+
+.inzmo-pill.cyan {
+  background: rgba(0, 216, 246, 0.1);
+  border-color: rgba(0, 216, 246, 0.3);
+  color: var(--accent-cyan);
+}
+
+.inzmo-pill.violet {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: rgba(99, 102, 241, 0.35);
+  color: #A5B4FC;
+}
+
+/* Pulse Dot */
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-mint);
+  box-shadow: 0 0 10px var(--accent-mint);
+  animation: pulse-ring 1.8s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 245, 155, 0.8);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 245, 155, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 245, 155, 0);
+  }
+}
+
+/* Inzmo Metric Stat Card */
+.inzmo-stat-card {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.inzmo-stat-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(0, 245, 155, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.inzmo-stat-value {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-top: 10px;
+  color: #FFFFFF;
+}
+
+/* Buttons */
+.inzmo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.inzmo-btn-primary {
+  background: linear-gradient(135deg, var(--accent-mint) 0%, #00C87E 100%);
+  color: #04120C;
+  box-shadow: 0 8px 24px rgba(0, 245, 155, 0.3);
+}
+
+.inzmo-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 245, 155, 0.45);
+  background: linear-gradient(135deg, #33FFB2 0%, #00E08F 100%);
+}
+
+.inzmo-btn-secondary {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-glass);
+  color: var(--text-main);
+}
+
+.inzmo-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.inzmo-btn-cyan {
+  background: linear-gradient(135deg, var(--accent-cyan) 0%, #00A6BE 100%);
+  color: #02141A;
+  box-shadow: 0 8px 24px rgba(0, 216, 246, 0.3);
+}
+
+.inzmo-btn-cyan:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 216, 246, 0.45);
+}
+
+/* Voice Mic Button Ripple */
+.voice-mic-btn {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-mint) 0%, var(--accent-cyan) 100%);
+  border: none;
+  color: #080b12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 35px var(--accent-mint-glow);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.voice-mic-btn.recording {
+  background: linear-gradient(135deg, #FF477E 0%, #FF0044 100%);
+  box-shadow: 0 0 45px rgba(255, 0, 68, 0.5);
+  animation: mic-pulse 1.4s infinite;
+}
+
+@keyframes mic-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 71, 126, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 24px rgba(255, 71, 126, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 71, 126, 0);
+  }
+}
+
+/* Audio Visualizer Wave Canvas */
+.visualizer-canvas {
+  width: 100%;
+  height: 90px;
+  border-radius: var(--radius-md);
+  background: rgba(10, 14, 22, 0.8);
+  border: 1px solid var(--border-glass);
+}
+
+/* Comparison Card (Direct vs Native Polish) */
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+@media (max-width: 768px) {
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.comparison-box {
+  padding: 16px;
+  border-radius: var(--radius-md);
+  font-size: 0.92rem;
+}
+
+.comparison-box.direct {
+  background: rgba(255, 94, 126, 0.08);
+  border: 1px solid rgba(255, 94, 126, 0.25);
+  color: #FFB3C1;
+}
+
+.comparison-box.native {
+  background: rgba(0, 245, 155, 0.08);
+  border: 1px solid rgba(0, 245, 155, 0.3);
+  color: #D1FAE5;
+}
+
+/* Inputs & Form Control */
+.inzmo-input, .inzmo-textarea, .inzmo-select {
+  width: 100%;
+  background: rgba(13, 18, 31, 0.8);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.inzmo-input:focus, .inzmo-textarea:focus, .inzmo-select:focus {
+  border-color: var(--accent-mint);
+  box-shadow: 0 0 0 3px var(--accent-mint-glow);
+}
+
+/* Tab Navigation */
+.inzmo-tab-bar {
+  display: flex;
+  gap: 6px;
+  background: rgba(13, 18, 31, 0.9);
+  padding: 6px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-glass);
+  overflow-x: auto;
+}
+
+.inzmo-tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+}
+
+.inzmo-tab-btn:hover {
+  color: var(--text-main);
+}
+
+.inzmo-tab-btn.active {
+  background: linear-gradient(135deg, rgba(0, 245, 155, 0.15) 0%, rgba(0, 216, 246, 0.15) 100%);
+  border: 1px solid var(--border-glass-glow);
+  color: var(--accent-mint);
+  box-shadow: var(--glow-mint);
+}
